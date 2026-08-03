@@ -9,6 +9,7 @@ export default function Home() {
     sundaySchool: "9:30 AM",
     sundayWorship: "10:45 AM",
     wednesdayService: "7:00 PM",
+    heroImage: "/new hope 2.png",
   };
 
   return (
