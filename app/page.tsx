@@ -163,8 +163,9 @@ export default function Home() {
                 <p><strong>Pastor:</strong> {contactInfo.pastor}</p>
                 <p><strong>Address:</strong> {contactInfo.address}</p>
                 <p><strong>Phone:</strong> {contactInfo.phone}</p>
-          </div>
-        </section>
+            </div>     
+          </section>
+        </div> 
       </main>
 
       {/* Footer */}
