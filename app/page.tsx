@@ -163,8 +163,6 @@ export default function Home() {
                 <p><strong>Pastor:</strong> {contactInfo.pastor}</p>
                 <p><strong>Address:</strong> {contactInfo.address}</p>
                 <p><strong>Phone:</strong> {contactInfo.phone}</p>
-              </div>
-            </div>
           </div>
         </section>
       </main>
