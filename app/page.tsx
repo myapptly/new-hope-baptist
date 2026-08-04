@@ -13,7 +13,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800">
+    <div className="min-h-screen bg-purple-50 text-purple-950">
       {/* Top Banner with Quick Address & Phone */}
       {/* Top Notification Bar */}
 <div className="bg-purple-700 text-white py-2 px-4 text-xs sm:text-sm font-medium">
@@ -77,32 +77,65 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Dedicated Bible College Highlight Section */}
-        <section id="college" className="py-16 bg-slate-900 text-white border-t border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <span className="text-emerald-500 font-semibold tracking-wider text-sm uppercase">Academic Ministry</span>
-              <h2 className="text-3xl md:text-4xl font-bold">New Hope Bible College</h2>
-              <p className="text-slate-300 leading-relaxed">
-                Equipping future leaders, pastors, and disciples with comprehensive theological education and practical ministry training.
-              </p>
-              <ul className="space-y-2 text-slate-300 text-sm">
-                <li className="flex items-center space-x-2">
-                  <span className="text-emerald-500">✓</span>
-                  <span>Flexible online and evening classes</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-emerald-500">✓</span>
-                  <span>In-depth Theology and Biblical Studies</span>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-xl">
-              <h3 className="text-xl font-bold mb-4 text-emerald-500">Upcoming Semester</h3>
-              <p className="text-sm text-slate-300">Enrollment is open for upcoming courses. Contact the church office for registration details.</p>
-            </div>
-          </div>
-        </section>
+        {/* Community / Welcome Feature Section */}
+<section className="py-12 px-4 max-w-7xl mx-auto">
+  <div className="bg-white rounded-2xl p-6 sm:p-10 shadow-md border border-purple-100 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div className="rounded-xl overflow-hidden shadow-sm order-2 md:order-1">
+      <img
+        src="/new hope 1.png"
+        alt="New Hope Community"
+        className="w-full h-64 object-cover rounded-xl"
+      />
+    </div>
+    <div className="order-1 md:order-2">
+      <h2 className="text-2xl font-bold text-purple-950 mb-3">Welcome to Our Fellowship</h2>
+      <p className="text-slate-600 mb-4">
+        Join us in worshipping and serving together. Whether you are seeking a church home or exploring faith, you are welcome here.
+      </p>
+      <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition">
+        Learn More About Us
+      </button>
+    </div>
+  </div>
+</section>
+
+        {/* Academic Ministry / Bible College Section */}
+<section id="college" className="py-12 px-4 max-w-7xl mx-auto">
+  <div className="bg-white rounded-2xl p-6 sm:p-10 shadow-md border border-purple-100 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div>
+      <span className="text-emerald-600 font-bold text-xs uppercase tracking-wider">Academic Ministry</span>
+      <h2 className="text-3xl font-extrabold text-purple-950 mt-1 mb-4">New Hope Bible College</h2>
+      <p className="text-slate-600 mb-6">
+        Equipping future leaders, pastors, and disciples with comprehensive theological education and practical ministry training.
+      </p>
+     
+      <ul className="space-y-2 mb-6 text-slate-700 text-sm font-medium">
+        <li className="flex items-center gap-2">
+          <span className="text-emerald-600">✓</span> Flexible online and evening classes
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="text-emerald-600">✓</span> In-depth Theology and Biblical Studies
+        </li>
+      </ul>
+
+      <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+        <h3 className="text-emerald-700 font-bold text-base mb-1">Upcoming Semester</h3>
+        <p className="text-slate-600 text-sm">
+          Enrollment is open for upcoming courses. Contact the church office for registration details.
+        </p>
+      </div>
+    </div>
+
+    {/* Added Image to fill right side */}
+    <div className="relative h-64 md:h-full min-h-[250px] rounded-xl overflow-hidden shadow-sm">
+      <img
+        src="/new hope 4.png"
+        alt="New Hope Bible College"
+        className="w-full h-full object-cover rounded-xl"
+      />
+    </div>
+  </div>
+</section>
 
         {/* Service Times & Location Section */}
         <section id="contact" className="max-w-7xl mx-auto px-4 py-16 space-y-12">
