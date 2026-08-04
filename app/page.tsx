@@ -52,30 +52,29 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <main>
-        <section className="relative bg-slate-900 text-white py-20 px-4 text-center">
-          <div className="relative max-w-4xl mx-auto space-y-6">
-            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-              Welcome to New Hope
-            </h2> 
-            <img
-              src="/new hope 2.png" 
-              alt="New Hope Baptist Church" 
-              className="w-full max-w-3xl mx-auto rounded-xl shadow-lg mb-6" 
-              />
-            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-              Loving God, Loving People, Preparing Disciples for The Ministry.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 pt-4">
-              <a href="#sermons" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md font-bold transition">
-                Watch Sermons
-              </a>
-              <a href="#college" className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-md font-bold border border-slate-700 transition">
-                Explore Bible College
-              </a>
-            </div>
-          </div>
-        </section>
+<section className="bg-purple-50 text-purple-950 py-12 px-4">
+  <div className="max-w-4xl mx-auto text-center">
+    <h1 className="text-3xl sm:text-4xl font-extrabold mb-6">Welcome to New Hope</h1>
+   
+    {/* Church Photo */}
+    <div className="mb-6 rounded-2xl overflow-hidden shadow-lg border border-purple-100">
+      <img src="/new hope 2.png" alt="New Hope Baptist Church" className="w-full h-auto object-cover" />
+    </div>
+
+    <p className="text-lg text-slate-700 font-medium mb-6">
+      Loving God, Loving People, Preparing Disciples for The Ministry.
+    </p>
+
+    <div className="flex flex-col sm:flex-row justify-center gap-4">
+      <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition">
+        Watch Sermons
+      </button>
+      <button className="border-2 border-purple-700 text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-xl font-semibold transition">
+        Explore Bible College
+      </button>
+    </div>
+  </div>
+</section>
 
         {/* Community / Welcome Feature Section */}
 <section className="py-12 px-4 max-w-7xl mx-auto">
@@ -129,9 +128,10 @@ export default function Home() {
     {/* Added Image to fill right side */}
     <div className="relative h-64 md:h-full min-h-[250px] rounded-xl overflow-hidden shadow-sm">
       <img
-        src="/new hope 4.png"
-        alt="New Hope Bible College"
-        className="w-full h-full object-cover rounded-xl"
+        <img src="/new hope 4.png" 
+        alt="Pastor Chuck Carver" 
+        className="w-full h-auto object-top rounded-xl" />
+
       />
     </div>
   </div>
