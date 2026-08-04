@@ -3,7 +3,9 @@ import './globals.css';
 export const metadata = {
   title: 'New Hope Baptist Church & Bible College',
   description: 'Welcome to New Hope Baptist Church and Bible College',
+  manifest: '/manifest.json',
   openGraph: {
+
     title: 'New Hope Baptist Church & Bible College',
     description: 'Loving God, Loving People, Preparing Disciples for The Ministry.',
     url: 'https://new-hope-baptist-seven.vercel.app',
