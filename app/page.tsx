@@ -126,13 +126,12 @@ export default function Home() {
     </div>
 
     {/* Added Image to fill right side */}
-    <div className="relative h-64 md:h-full min-h-[250px] rounded-xl overflow-hidden shadow-sm">
-      <img
-        <img src="/new hope 4.png" 
-        alt="Pastor Chuck Carver" 
-        className="w-full h-auto object-top rounded-xl" />
-
-      />
+    <div className="relative w-full rounded-xl overflow-hidden">
+  <img
+    src="/new hope 4.png"
+    alt="Pastor Chuck Carver"
+    className="w-full h-auto object-top rounded-xl"
+     />
     </div>
   </div>
 </section>
