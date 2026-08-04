@@ -15,17 +15,18 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800">
       {/* Top Banner with Quick Address & Phone */}
-      <div className="bg-amber-600 text-white text-xs py-2 px-4">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          <div>
-            📍 <span>{contactInfo.address}</span> | 📞 <span>{contactInfo.phone}</span>
-          </div>
-          <div className="font-semibold">
-            Pastor: {contactInfo.pastor}
-          </div>
-        </div>
-      </div>
-
+      {/* Top Notification Bar */}
+<div className="bg-purple-700 text-white py-2 px-4 text-xs sm:text-sm font-medium">
+  <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+    <div className="flex flex-wrap items-center justify-center gap-x-2">
+      <span>📍 4911 Old Rural Hall Road, Winston-Salem, NC 27105</span>
+      <span className="hidden sm:inline">|</span>
+      <span className="whitespace-nowrap">📞 (336) 406-5502</span>
+    </div>
+    <div>Pastor: Chuck Carver</div>
+  </div>
+</div>
+      
       {/* Main Header */}
       <header className="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
