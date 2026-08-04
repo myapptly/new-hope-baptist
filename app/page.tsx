@@ -28,15 +28,15 @@ export default function Home() {
 </div>
       
       {/* Main Header */}
-      <header className="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+<header className="bg-purple-100 text-purple-950 shadow-sm sticky top-0 z-50 border-b border-purple-200">
+  <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center font-bold text-lg">
               NH
             </div>
             <div>
               <h1 className="text-xl font-bold leading-none">New Hope Baptist Church</h1>
-              <span className="text-xs text-slate-400">& Bible College</span>
+              <span className="text-xs text-purple-700">& Bible College</span>
             </div>
           </div>
           <nav className="hidden md:flex space-x-6 text-sm font-medium">
