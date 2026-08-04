@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Home() {
   const contactInfo = {
-    pastor: "Pastor Chuck Carver",
+    pastor: "Chuck Carver",
     phone: "(336) 406-5502",
     address: "4911 Old Rural Hall Road, Winston-Salem, NC  27105",
     sundaySchool: "9:30 AM",
@@ -63,7 +63,7 @@ export default function Home() {
               className="w-full max-w-3xl mx-auto rounded-xl shadow-lg mb-6" 
               />
             <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-              Loving God, Loving People, and Equipping Disciples for Ministry.
+              Loving God, Loving People, Preparing Disciples for The Ministry.
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <a href="#sermons" className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-md font-bold transition">
