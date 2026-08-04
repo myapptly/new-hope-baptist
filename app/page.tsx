@@ -14,9 +14,21 @@ export default function Home() {
       <div className="bg-purple-700 text-white py-2 px-4 text-xs sm:text-sm font-medium">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
           <div className="flex flex-wrap items-center justify-center gap-x-2">
-            <span>📍 4911 Old Rural Hall Road, Winston-Salem, NC 27105</span>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=4911+Old+Rural+Hall+Road,+Winston-Salem,+NC+27105"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline flex items-center gap-1"
+            >
+              📍 4911 Old Rural Hall Road, Winston-Salem, NC 27105
+            </a>
             <span className="hidden sm:inline">|</span>
-            <span className="whitespace-nowrap">📞 (336) 406-5502</span>
+            <a
+              href="tel:3364065502"
+              className="hover:underline flex items-center gap-1 whitespace-nowrap"
+            >
+              📞 (336) 406-5502
+            </a>
           </div>
           <div>Pastor: Chuck Carver</div>
         </div>
@@ -141,11 +153,35 @@ export default function Home() {
               <h2 className="text-2xl font-bold text-slate-900">Location & Contact</h2>
               <div className="space-y-2 text-sm text-slate-800">
                 <p><strong>Pastor:</strong> {contactInfo.pastor}</p>
-                <p><strong>Address:</strong> {contactInfo.address}</p>
-                <p><strong>Phone:</strong> {contactInfo.phone}</p>
+                <p>
+                  <strong>Address:</strong>{' '}
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-700 hover:underline font-medium"
+                  >
+                    {contactInfo.address}
+                  </a>
+                </p>
+                <p className="flex items-center gap-3 pt-1">
+                  <strong>Phone:</strong>
+                  <a
+                    href={`tel:${contactInfo.phone.replace(/[^0-9]/g, '')}`}
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 rounded-md text-xs font-semibold transition"
+                  >
+                    Call
+                  </a>
+                  <a
+                    href={`sms:${contactInfo.phone.replace(/[^0-9]/g, '')}`}
+                    className="bg-purple-700 hover:bg-purple-800 text-white px-3 py-1 rounded-md text-xs font-semibold transition"
+                  >
+                    Text
+                  </a>
+                  <span className="text-slate-600 font-medium">{contactInfo.phone}</span>
+                </p>
               </div>
             </div>
-          </div>
         </section>
       </main>
 
