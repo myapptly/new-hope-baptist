@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 export default function Home() {
@@ -56,12 +57,31 @@ export default function Home() {
             <p className="text-lg text-slate-700 font-medium mb-6">
               Loving God, Loving People, Preparing Disciples for The Ministry.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+              <button className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-sm">
                 Watch Sermons
               </button>
-              <button className="border-2 border-purple-700 text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-xl font-semibold transition">
+              <button className="w-full sm:w-auto border-2 border-purple-700 text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-xl font-semibold transition">
                 Explore Bible College
+              </button>
+             
+              {/* Share Button */}
+              <button
+                onClick={() => {
+                  if (navigator.share) {
+                    navigator.share({
+                      title: 'New Hope Baptist Church & Bible College',
+                      text: 'Check out New Hope Baptist Church & Bible College!',
+                      url: window.location.href,
+                    }).catch(console.error);
+                  } else {
+                    navigator.clipboard.writeText(window.location.href);
+                    alert('Link copied to clipboard!');
+                  }
+                }}
+                className="w-full sm:w-auto bg-purple-700 hover:bg-purple-800 text-white px-5 py-3 rounded-xl font-semibold transition flex items-center justify-center gap-2 shadow-sm"
+              >
+                <span>🔗</span> Share Site
               </button>
             </div>
           </div>
