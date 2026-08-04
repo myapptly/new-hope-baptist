@@ -163,15 +163,17 @@ export default function Home() {
                 <p><strong>Pastor:</strong> {contactInfo.pastor}</p>
                 <p><strong>Address:</strong> {contactInfo.address}</p>
                 <p><strong>Phone:</strong> {contactInfo.phone}</p>
-            </div>     
-          </section>
-        </div> 
-      </main>
+            </div>
+      </div>
+    </section>
+  </div>
+</main>
 
-      {/* Footer */}
-      <footer className="bg-slate-950 text-slate-400 py-8 px-4 border-t border-slate-800 text-center text-xs">
-        <p>&copy; {new Date().getFullYear()} New Hope Baptist Church & Bible College. All rights reserved.</p>
-      </footer>
+{/* Footer */}
+<footer className="bg-purple-950 text-purple-200 py-8 px-4 border-t border-purple-900 text-center text-sm">
+  <p>&copy; {new Date().getFullYear()} New Hope Baptist Church & Bible College. All rights reserved.</p>
+</footer>
+
     </div>
   );
 }
