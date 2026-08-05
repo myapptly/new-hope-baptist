@@ -37,15 +37,22 @@ export default function Home() {
       {/* Main Header */}
       <header className="bg-purple-100 text-purple-950 shadow-sm sticky top-0 z-50 border-b border-purple-200">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-              NH
-            </div>
-            <div>
-              <h1 className="text-xl font-bold leading-none">New Hope Baptist Church</h1>
-              <span className="text-xs text-purple-700 font-medium">& Bible College</span>
-            </div>
-          </div>
+         <div className="flex items-center gap-3.5">
+  {/* Decorative Logo Badge */}
+  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-purple-800 via-purple-700 to-indigo-900 text-white font-serif font-bold text-lg shadow-md ring-2 ring-purple-300/50">
+    NH
+  </div>
+
+  {/* Two-Tiered Typography */}
+  <div className="flex flex-col">
+    <span className="text-xl font-bold tracking-tight font-serif text-slate-900">
+      New Hope <span className="text-purple-800">Baptist Church</span>
+    </span>
+    <span className="text-[11px] font-semibold tracking-widest uppercase text-purple-700/80 -mt-0.5">
+      &amp; Bible College
+    </span>
+  </div>
+</div>
           <nav className="hidden md:flex space-x-6 text-sm font-medium">
             <a href="#home" className="hover:text-emerald-600 transition">Home</a>
             <a href="#sermons" className="hover:text-emerald-600 transition">Sermons</a>
@@ -60,44 +67,62 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section id="home" className="bg-purple-50 text-purple-950 py-12 px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl font-extrabold mb-6">Welcome to New Hope</h1>
-            <div className="mb-6 rounded-2xl overflow-hidden shadow-lg border border-purple-100">
-              <img src="/new hope 2.png" alt="New Hope Baptist Church" className="w-full h-auto object-cover" />
-            </div>
-            <p className="text-lg text-slate-700 font-medium mb-6">
-              Loving God, Loving People, Preparing Disciples for The Ministry.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <button className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-sm">
-                Watch Sermons
-              </button>
-              <button className="w-full sm:w-auto border-2 border-purple-700 text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-xl font-semibold transition">
-                Explore Bible College
-              </button>
-             
-              {/* Share Button */}
-              <button
-                onClick={() => {
-                  if (navigator.share) {
-                    navigator.share({
-                      title: 'New Hope Baptist Church & Bible College',
-                      text: 'Check out New Hope Baptist Church & Bible College!',
-                      url: window.location.href,
-                    }).catch(console.error);
-                  } else {
-                    navigator.clipboard.writeText(window.location.href);
-                    alert('Link copied to clipboard!');
-                  }
-                }}
-                className="w-full sm:w-auto bg-purple-700 hover:bg-purple-800 text-white px-5 py-3 rounded-xl font-semibold transition flex items-center justify-center gap-2 shadow-sm"
-              >
-                <span>🔗</span> Share Site
-              </button>
-            </div>
-          </div>
-        </section>
+    <section id="home" className="bg-purple-50 text-purple-950 py-12 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Decorative Eyebrow */}
+        <span className="text-xs font-semibold tracking-widest text-purple-700 uppercase mb-2 block">
+          ┼ &nbsp; Faith &bull; Family &bull; Fellowship &nbsp; ┼
+        </span>
+
+        {/* Main Decorative Heading */}
+        <h1 className="text-4xl md:text-6xl font-serif font-bold tracking-wide bg-gradient-to-r from-purple-950 via-purple-800 to-indigo-950 bg-clip-text text-transparent drop-shadow-sm mb-3">
+          Welcome to New Hope
+        </h1>
+
+        {/* Decorative Flourish Divider */}
+        <div className="mb-6 flex items-center justify-center gap-3 opacity-80">
+          <div className="h-[1px] w-16 bg-gradient-to-r from-transparent via-purple-400 to-purple-600"></div>
+          <span className="text-amber-500 text-xs">✦</span>
+          <div className="h-[1px] w-16 bg-gradient-to-l from-transparent via-purple-400 to-purple-600"></div>
+        </div>
+
+        <div className="mb-6 rounded-2xl overflow-hidden shadow-lg border border-purple-100">
+          <img src="/new hope 2.png" alt="New Hope Baptist Church" className="w-full h-auto object-cover" />
+        </div>
+
+        <p className="text-lg text-slate-700 font-medium mb-6">
+          Loving God, Loving People, Preparing Disciples for The Ministry.
+        </p>
+
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <button className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-sm">
+            Watch Sermons
+          </button>
+          <button className="w-full sm:w-auto border-2 border-purple-700 text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-xl font-semibold transition">
+            Explore Bible College
+          </button>
+
+          {/* Share Button */}
+          <button
+            onClick={() => {
+              if (navigator.share) {
+                navigator.share({
+                  title: 'New Hope Baptist Church & Bible College',
+                  text: 'Check out New Hope Baptist Church & Bible College!',
+                  url: window.location.href,
+                }).catch(console.error);
+              } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+              }
+            }}
+            className="w-full sm:w-auto bg-purple-700 hover:bg-purple-800 text-white px-5 py-3 rounded-xl font-semibold transition flex items-center justify-center gap-2 shadow-sm"
+          >
+            <span>🔗</span> Share Site
+          </button>
+        </div>
+      </div>
+    </section>
 
         {/* Bible College Section */}
         <section id="college" className="py-12 px-4 max-w-7xl mx-auto">
