@@ -75,9 +75,9 @@ export default function Home() {
         </span>
 
         {/* Main Decorative Heading */}
-        <h1 className="text-4xl md:text-6xl font-serif font-bold tracking-wide bg-gradient-to-r from-purple-950 via-purple-800 to-indigo-950 bg-clip-text text-transparent drop-shadow-sm mb-3">
-          Welcome to New Hope
-        </h1>
+        <h1 className="text-4xl md:text-6xl font-serif font-bold tracking-wide bg-gradient-to-r from-purple-950 via-purple-800 to-indigo-950 bg-clip-text text-transparent drop-shadow-sm pb-2 leading-tight mb-2">
+  Welcome to New Hope
+</h1>
 
         {/* Decorative Flourish Divider */}
         <div className="mb-6 flex items-center justify-center gap-3 opacity-80">
