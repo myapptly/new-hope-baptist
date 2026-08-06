@@ -135,7 +135,7 @@ export default function Home() {
               </p>
               <ul className="space-y-2 mb-6 text-slate-700 text-sm font-medium">
                 <li className="flex items-center gap-2">
-                  <span className="text-emerald-600">✓</span> Flexible online and evening classes
+                  <span className="text-emerald-600">✓</span> Evening classes
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-600">✓</span> In-depth Theology and Biblical Studies
@@ -161,16 +161,16 @@ export default function Home() {
               <h2 className="text-2xl font-bold text-slate-900 mb-4">Service Times</h2>
               <ul className="space-y-3 text-slate-700">
                 <li className="flex justify-between border-b pb-2">
-                  <span className="font-semibold">Sunday School</span>
-                  <span className="text-emerald-600 font-bold">9:30 AM</span>
+                  <span className="font-semibold">Sunday Morning Worship</span>
+                  <span className="text-emerald-600 font-bold">11:00 AM</span>
                 </li>
                 <li className="flex justify-between border-b pb-2">
-                  <span className="font-semibold">Sunday Morning Worship</span>
-                  <span className="text-emerald-600 font-bold">10:45 AM</span>
+                  <span className="font-semibold">Sunday Evenning Worship</span>
+                  <span className="text-emerald-600 font-bold">6:00 PM</span>
                 </li>
                 <li className="flex justify-between border-b pb-2">
                   <span className="font-semibold">Wednesday Bible Study</span>
-                  <span className="text-emerald-600 font-bold">7:00 PM</span>
+                  <span className="text-emerald-600 font-bold">10:00 AM & 7:00 PM</span>
                 </li>
               </ul>
             </div>
