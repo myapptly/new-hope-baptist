@@ -96,10 +96,10 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <button className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-sm">
-            Watch Sermons
+            Sermons
           </button>
           <button className="w-full sm:w-auto border-2 border-purple-700 text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-xl font-semibold transition">
-            Explore Bible College
+            Bible College
           </button>
 
           {/* Share Button */}
