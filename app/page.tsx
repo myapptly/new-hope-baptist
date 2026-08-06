@@ -59,8 +59,22 @@ export default function Home() {
             <a href="#college" className="hover:text-emerald-600 transition">Bible College</a>
             <a href="#contact" className="hover:text-emerald-600 transition">Contact</a>
           </nav>
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md font-semibold text-sm transition">
-            Plan Your Visit
+          <button
+            onClick={() => {
+              if (navigator.share) {
+                navigator.share({
+                  title: 'New Hope Baptist Church & Bible College',
+                  text: 'Check out New Hope Baptist Church & Bible College!',
+                  url: window.location.href,
+                }).catch(console.error);
+              } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+              }
+            }}
+            className="bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded-md font-semibold text-sm transition flex items-center justify-center gap-2"
+          >
+            <span>🔗</span> Share Site
           </button>
         </div>
       </header>
@@ -100,25 +114,6 @@ export default function Home() {
           </button>
           <button className="w-full sm:w-auto border-2 border-purple-700 text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-xl font-semibold transition">
             Bible College
-          </button>
-
-          {/* Share Button */}
-          <button
-            onClick={() => {
-              if (navigator.share) {
-                navigator.share({
-                  title: 'New Hope Baptist Church & Bible College',
-                  text: 'Check out New Hope Baptist Church & Bible College!',
-                  url: window.location.href,
-                }).catch(console.error);
-              } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Link copied to clipboard!');
-              }
-            }}
-            className="w-full sm:w-auto bg-purple-700 hover:bg-purple-800 text-white px-5 py-3 rounded-xl font-semibold transition flex items-center justify-center gap-2 shadow-sm"
-          >
-            <span>🔗</span> Share Site
           </button>
         </div>
       </div>
