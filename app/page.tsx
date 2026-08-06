@@ -55,7 +55,7 @@ export default function Home() {
 </div>
           <nav className="hidden md:flex space-x-6 text-sm font-medium">
             <a href="#home" className="hover:text-emerald-600 transition">Home</a>
-            <a href="#sermons" className="hover:text-emerald-600 transition">Sermons</a>
+            <a href="/sermons" className="hover:text-emerald-600 transition">Sermons</a>
             <a href="#college" className="hover:text-emerald-600 transition">Bible College</a>
             <a href="#contact" className="hover:text-emerald-600 transition">Contact</a>
           </nav>
