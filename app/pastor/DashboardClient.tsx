@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { supabase } from '../../lib/supabase/client';
 
 type Sermon = {
@@ -39,6 +39,13 @@ type ContentListItem = {
   status: 'Published' | 'Draft';
   created_at: string;
   raw: Sermon | SpecialEvent;
+};
+
+type SelectedPhoto = {
+  id: string;
+  file: File;
+  previewUrl: string;
+  name: string;
 };
 
 const initialSermon: Sermon = {
@@ -99,9 +106,9 @@ export default function DashboardClient() {
   const [selectedEvent, setSelectedEvent] = useState<SpecialEvent>(initialEvent);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [actionPending, setActionPending] = useState(false);
-  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const [selectedFilePreviews, setSelectedFilePreviews] = useState<string[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<SelectedPhoto[]>([]);
   const [removedPhotoPaths, setRemovedPhotoPaths] = useState<string[]>([]);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const contentItems = useMemo<ContentListItem[]>(() => {
     const sermonItems: ContentListItem[] = sermons.map((sermon) => ({
@@ -132,10 +139,8 @@ export default function DashboardClient() {
   }, []);
 
   useEffect(() => {
-    const objectUrls = selectedFiles.map((file) => URL.createObjectURL(file));
-    setSelectedFilePreviews(objectUrls);
     return () => {
-      objectUrls.forEach(URL.revokeObjectURL);
+      selectedFiles.forEach((photo) => URL.revokeObjectURL(photo.previewUrl));
     };
   }, [selectedFiles]);
 
@@ -172,6 +177,7 @@ export default function DashboardClient() {
 
   function resetEventForm() {
     setSelectedEvent(initialEvent);
+    selectedFiles.forEach((photo) => URL.revokeObjectURL(photo.previewUrl));
     setSelectedFiles([]);
     setRemovedPhotoPaths([]);
   }
@@ -184,19 +190,36 @@ export default function DashboardClient() {
   function startEditingEvent(event: SpecialEvent) {
     setActiveTab('event');
     setSelectedEvent(event);
+    selectedFiles.forEach((photo) => URL.revokeObjectURL(photo.previewUrl));
     setSelectedFiles([]);
     setRemovedPhotoPaths([]);
   }
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.target.files;
-    if (!files) return;
-    setSelectedFiles((current) => [...current, ...Array.from(files)]);
-    event.target.value = '';
+    if (!files?.length) return;
+
+    const newPhotos: SelectedPhoto[] = Array.from(files).map((file) => ({
+      id: `${file.name}-${file.lastModified}-${crypto.randomUUID()}`,
+      file,
+      previewUrl: URL.createObjectURL(file),
+      name: file.name,
+    }));
+
+    setSelectedFiles((current) => [...current, ...newPhotos]);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   }
 
-  function removeSelectedFile(index: number) {
-    setSelectedFiles((current) => current.filter((_, currentIndex) => currentIndex !== index));
+  function removeSelectedFile(id: string) {
+    setSelectedFiles((current) => {
+      const removed = current.find((photo) => photo.id === id);
+      if (removed) {
+        URL.revokeObjectURL(removed.previewUrl);
+      }
+      return current.filter((photo) => photo.id !== id);
+    });
   }
 
   function removeExistingPhoto(path: string) {
@@ -213,11 +236,11 @@ export default function DashboardClient() {
     }
 
     const uploadedPaths: string[] = [];
-    for (const file of selectedFiles) {
-      const filePath = `events/${eventId}/${Date.now()}-${file.name.replaceAll(' ', '_')}`;
+    for (const photo of selectedFiles) {
+      const filePath = `events/${eventId}/${Date.now()}-${photo.file.name.replaceAll(' ', '_')}`;
       const { data, error } = await supabase.storage
         .from('special-event-photos')
-        .upload(filePath, file, { cacheControl: '3600', upsert: false });
+        .upload(filePath, photo.file, { cacheControl: '3600', upsert: false });
 
       if (error) {
         throw new Error(error.message);
@@ -369,10 +392,20 @@ export default function DashboardClient() {
   }
 
   const eventPhotoPreviews = useMemo(() => {
-    const existing = selectedEvent.photo_paths.map((path) => ({ path, url: supabase.storage.from('special-event-photos').getPublicUrl(path).data.publicUrl }));
-    const newFiles = selectedFiles.map((file, index) => ({ path: `new-${index}`, url: selectedFilePreviews[index] }));
+    const existing = selectedEvent.photo_paths.map((path) => ({
+      path,
+      url: supabase.storage.from('special-event-photos').getPublicUrl(path).data.publicUrl,
+      name: path.split('/').pop() ?? path,
+      type: 'existing' as const,
+    }));
+    const newFiles = selectedFiles.map((photo) => ({
+      path: photo.id,
+      url: photo.previewUrl,
+      name: photo.name,
+      type: 'new' as const,
+    }));
     return [...existing, ...newFiles];
-  }, [selectedEvent.photo_paths, selectedFiles, selectedFilePreviews]);
+  }, [selectedEvent.photo_paths, selectedFiles]);
 
   return (
     <div className="mt-8">
@@ -583,6 +616,7 @@ export default function DashboardClient() {
                         <p className="text-sm text-slate-600">Upload multiple images from phone or computer.</p>
                       </div>
                       <input
+                        ref={fileInputRef}
                         type="file"
                         accept="image/*"
                         multiple
@@ -593,18 +627,21 @@ export default function DashboardClient() {
 
                     {eventPhotoPreviews.length > 0 ? (
                       <div className="grid gap-3 sm:grid-cols-3">
-                        {eventPhotoPreviews.map((photo, index) => (
+                        {eventPhotoPreviews.map((photo) => (
                           <div key={photo.path} className="group relative overflow-hidden rounded-3xl border border-purple-200 bg-purple-50">
                             <img
                               src={photo.url}
-                              alt="Event preview"
+                              alt={photo.name}
                               className="h-36 w-full object-cover"
                             />
+                            <div className="absolute left-2 top-2 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
+                              {photo.name}
+                            </div>
                             <button
                               type="button"
                               onClick={() => {
-                                if (photo.path.startsWith('new-')) {
-                                  removeSelectedFile(Number(photo.path.replace('new-', '')));
+                                if (photo.type === 'new') {
+                                  removeSelectedFile(photo.path);
                                 } else {
                                   removeExistingPhoto(photo.path);
                                 }
