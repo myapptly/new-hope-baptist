@@ -23,14 +23,14 @@ type SpecialEvent = {
   end_time: string | null;
   location: string;
   description: string;
-  photo_paths: string[];
+  photo_paths?: string[] | null;
   published: boolean;
   created_at: string;
 };
 
 type Props = {
-  sermons: Sermon[];
-  events: SpecialEvent[];
+  sermons?: Sermon[] | null;
+  events?: SpecialEvent[] | null;
 };
 
 const tabs = ['All', 'Sermons', 'Special Events'] as const;
@@ -57,8 +57,11 @@ export default function PublicContentList({ sermons, events }: Props) {
   const [activeTab, setActiveTab] = useState<Tab>('All');
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
+  const sermonList = useMemo(() => sermons ?? [], [sermons]);
+  const eventList = useMemo(() => events ?? [], [events]);
+
   const items = useMemo(() => {
-    const sermonItems = sermons.map((item) => ({
+    const sermonItems = sermonList.map((item) => ({
       id: item.id,
       title: item.title,
       label: 'SERMON',
@@ -77,7 +80,7 @@ export default function PublicContentList({ sermons, events }: Props) {
       end_time: null,
     }));
 
-    const eventItems = events.map((item) => ({
+    const eventItems = eventList.map((item) => ({
       id: item.id,
       title: item.event_name,
       label: 'SPECIAL EVENT',
@@ -91,13 +94,13 @@ export default function PublicContentList({ sermons, events }: Props) {
       event_type: item.event_type,
       location: item.location,
       description: item.description,
-      photo_paths: item.photo_paths,
+      photo_paths: item.photo_paths ?? [],
       start_time: item.start_time,
       end_time: item.end_time,
     }));
 
     return [...sermonItems, ...eventItems].sort((a, b) => (a.date < b.date ? 1 : -1));
-  }, [sermons, events]);
+  }, [sermonList, eventList]);
 
   const filteredItems = useMemo(() => {
     if (activeTab === 'Sermons') return items.filter((item) => item.type === 'sermon');
