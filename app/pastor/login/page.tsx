@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../../lib/supabase/client';
 
@@ -11,7 +11,7 @@ export default function PastorLoginPage() {
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setErrorMessage('');
     setIsSubmitting(true);
@@ -41,7 +41,7 @@ export default function PastorLoginPage() {
           </p>
           <h1 className="mb-4 text-3xl font-serif font-bold">New Hope Baptist Church</h1>
           <p className="text-sm leading-7 text-purple-100">
-            Sign in to manage sermon content for the church ministry pages.
+            Sign in to manage sermons and special events for the church ministry pages.
           </p>
         </div>
 

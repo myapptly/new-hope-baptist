@@ -1,6 +1,16 @@
-import React from 'react';
+import { createServerClient } from '../../lib/supabase/server';
+import PublicContentList from './PublicContentList';
 
-export default function SermonsPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function SermonsPage() {
+  const supabase = await createServerClient();
+
+  const [{ data: sermons = [] }, { data: events = [] }] = await Promise.all([
+    supabase.from('sermons').select('*').eq('published', true).order('date', { ascending: false }),
+    supabase.from('special_events').select('*').eq('published', true).order('event_date', { ascending: false }),
+  ]);
+
   return (
     <div className="min-h-screen bg-purple-50 text-slate-800">
       <div className="bg-purple-700 text-white py-2 px-4 text-xs sm:text-sm font-medium">
@@ -43,7 +53,7 @@ export default function SermonsPage() {
           </div>
           <nav className="hidden md:flex space-x-6 text-sm font-medium">
             <a href="/" className="hover:text-emerald-600 transition">Home</a>
-            <a href="/sermons" className="hover:text-emerald-600 transition">Sermons</a>
+            <a href="/sermons" className="hover:text-emerald-600 transition">Sermons & Special Events</a>
             <a href="/#college" className="hover:text-emerald-600 transition">Bible College</a>
             <a href="/#contact" className="hover:text-emerald-600 transition">Contact</a>
           </nav>
@@ -57,17 +67,15 @@ export default function SermonsPage() {
           </span>
 
           <h1 className="text-4xl md:text-5xl font-serif font-bold tracking-wide text-purple-950 leading-tight mb-4">
-            Sermons
+            Sermons & Special Events
           </h1>
 
           <p className="text-lg text-slate-700 font-medium mb-6">
-            Discover sermons that help strengthen your faith, build community, and anchor your life in Scripture.
+            Discover published sermons and special gatherings designed to strengthen your faith and build community.
           </p>
 
           <div className="rounded-3xl bg-white border border-purple-100 shadow-md p-10">
-            <p className="text-slate-700 text-base md:text-lg">
-              Published text sermons will appear here.
-            </p>
+            <PublicContentList sermons={sermons} events={events} />
           </div>
         </div>
       </main>
