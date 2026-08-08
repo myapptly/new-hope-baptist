@@ -112,9 +112,9 @@ export default function Home() {
           <a href="/sermons" className="w-[88%] sm:w-auto inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-sm">
             Sermons
           </a>
-          <button className="w-[88%] sm:w-auto border-2 border-purple-700 text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-xl font-semibold transition">
+          <a href="/bible-college" className="w-[88%] sm:w-auto inline-flex items-center justify-center border-2 border-purple-700 text-purple-700 hover:bg-purple-100 px-6 py-3 rounded-xl font-semibold transition">
             Bible College
-          </button>
+          </a>
         </div>
       </div>
     </section>
