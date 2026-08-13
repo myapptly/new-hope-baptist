@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react';
 type Sermon = {
   id: string;
   title: string;
-  date: string;
+  sermon_date: string;
   passage: string;
   speaker: string;
   body: string;
@@ -65,7 +65,7 @@ export default function PublicContentList({ sermons, events }: Props) {
       id: item.id,
       title: item.title,
       label: 'SERMON',
-      date: item.date,
+      date: item.sermon_date,
       subtitle: item.passage || item.speaker,
       body: item.body,
       speaker: item.speaker,

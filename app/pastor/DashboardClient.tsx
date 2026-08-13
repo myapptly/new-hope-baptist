@@ -6,7 +6,7 @@ import { supabase } from '../../lib/supabase/client';
 type Sermon = {
   id: string;
   title: string;
-  date: string;
+  sermon_date: string;
   passage: string;
   speaker: string;
   body: string;
@@ -51,7 +51,7 @@ type SelectedPhoto = {
 const initialSermon: Sermon = {
   id: '',
   title: '',
-  date: '',
+  sermon_date: '',
   passage: '',
   speaker: '',
   body: '',
@@ -115,7 +115,7 @@ export default function DashboardClient() {
       id: sermon.id,
       type: 'sermon',
       title: sermon.title || 'Untitled Sermon',
-      subtitle: sermon.passage || sermon.speaker || formatDate(sermon.date),
+      subtitle: sermon.passage || sermon.speaker || formatDate(sermon.sermon_date),
       status: sermon.published ? 'Published' : 'Draft',
       created_at: sermon.created_at,
       raw: sermon,
@@ -255,7 +255,7 @@ export default function DashboardClient() {
   }
 
   async function saveSermon(publish: boolean) {
-    if (!selectedSermon.title.trim() || !selectedSermon.date) {
+    if (!selectedSermon.title.trim() || !selectedSermon.sermon_date) {
       setStatusMessage('A sermon title and date are required.');
       return;
     }
@@ -270,7 +270,7 @@ export default function DashboardClient() {
 
     const payload = {
       title: selectedSermon.title,
-      date: selectedSermon.date,
+      sermon_date: selectedSermon.sermon_date,
       passage: selectedSermon.passage,
       speaker: selectedSermon.speaker,
       body: selectedSermon.body,
@@ -464,8 +464,8 @@ export default function DashboardClient() {
                       <span className="font-semibold">Date</span>
                       <input
                         type="date"
-                        value={selectedSermon.date}
-                        onChange={(event) => setSelectedSermon({ ...selectedSermon, date: event.target.value })}
+                        value={selectedSermon.sermon_date}
+                        onChange={(event) => setSelectedSermon({ ...selectedSermon, sermon_date: event.target.value })}
                         className="w-full rounded-2xl border border-purple-200 bg-white px-4 py-3 text-sm outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
                       />
                     </label>

@@ -7,7 +7,7 @@ export default async function SermonsPage() {
   const supabase = await createServerClient();
 
   const [{ data: sermons = [] }, { data: events = [] }] = await Promise.all([
-    supabase.from('sermons').select('*').eq('published', true).order('date', { ascending: false }),
+    supabase.from('sermons').select('*').eq('published', true).order('sermon_date', { ascending: false }),
     supabase.from('special_events').select('*').eq('published', true).order('event_date', { ascending: false }),
   ]);
 
