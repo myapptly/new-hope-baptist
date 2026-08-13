@@ -209,12 +209,34 @@ export default function Home() {
         <section className="max-w-7xl mx-auto px-4 py-12">
           <div className="bg-white p-8 rounded-xl shadow-sm border border-purple-100 text-center">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Scan to Open the New Hope App</h2>
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-8">
               <img
                 src="/new-hope-baptist-qr-code.png"
                 alt="New Hope Baptist Church QR Code"
                 className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain"
               />
+            </div>
+            
+            {/* Home Screen Installation Instructions */}
+            <div className="pt-8 border-t border-purple-100">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Add New Hope to Your Home Screen</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Android:</h4>
+                  <p className="text-slate-700 text-sm leading-relaxed">
+                    Open the app in Chrome, tap the three-dot menu ⋮, then choose Add to Home screen or Install app.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-2">iPhone:</h4>
+                  <p className="text-slate-700 text-sm leading-relaxed">
+                    Open the app in Safari, tap the Share button, then choose Add to Home Screen.
+                  </p>
+                </div>
+              </div>
+              <p className="text-slate-700 text-sm leading-relaxed mt-4">
+                Once added, open New Hope anytime from the icon on your phone.
+              </p>
             </div>
           </div>
         </section>
