@@ -5,6 +5,7 @@ import { supabase } from '../../lib/supabase/client';
 
 type Sermon = {
   id: string;
+  slug: string;
   title: string;
   sermon_date: string;
   passage: string;
@@ -50,6 +51,7 @@ type SelectedPhoto = {
 
 const initialSermon: Sermon = {
   id: '',
+  slug: '',
   title: '',
   sermon_date: '',
   passage: '',
@@ -94,6 +96,19 @@ function formatTime(value: string) {
   if (!value) return '';
   const date = new Date(`1970-01-01T${value}`);
   return date.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+}
+
+function generateSermonSlug(title: string) {
+  const normalized = title
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, ' ')
+    .replace(/\s+/g, '-');
+
+  return normalized || 'sermon';
 }
 
 export default function DashboardClient() {
@@ -268,7 +283,10 @@ export default function DashboardClient() {
     setActionPending(true);
     setStatusMessage(null);
 
+    const generatedSlug = generateSermonSlug(selectedSermon.title.trim());
+
     const payload = {
+      slug: generatedSlug,
       title: selectedSermon.title,
       sermon_date: selectedSermon.sermon_date,
       passage: selectedSermon.passage,
