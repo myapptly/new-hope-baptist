@@ -204,6 +204,20 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* QR Code Section */}
+        <section className="max-w-7xl mx-auto px-4 py-12">
+          <div className="bg-white p-8 rounded-xl shadow-sm border border-purple-100 text-center">
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">Scan to Open the New Hope App</h2>
+            <div className="flex justify-center">
+              <img
+                src="/new-hope-baptist-qr-code.png"
+                alt="New Hope Baptist Church QR Code"
+                className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain"
+              />
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
