@@ -10,7 +10,8 @@ type Sermon = {
   sermon_date: string;
   passage: string;
   speaker: string;
-  body: string;
+  content: string;
+  body?: string;
   video_link: string;
   published: boolean;
   created_by: string | null;
@@ -56,6 +57,7 @@ const initialSermon: Sermon = {
   sermon_date: '',
   passage: '',
   speaker: '',
+  content: '',
   body: '',
   video_link: '',
   published: false,
@@ -283,6 +285,7 @@ export default function DashboardClient() {
     setActionPending(true);
     setStatusMessage(null);
 
+    const sermonText = selectedSermon.content ?? selectedSermon.body ?? '';
     const generatedSlug = generateSermonSlug(selectedSermon.title.trim());
 
     const payload = {
@@ -291,7 +294,7 @@ export default function DashboardClient() {
       sermon_date: selectedSermon.sermon_date,
       passage: selectedSermon.passage,
       speaker: selectedSermon.speaker,
-      body: selectedSermon.body,
+      content: sermonText,
       video_link: selectedSermon.video_link,
       published: publish,
       created_by: selectedSermon.id ? selectedSermon.created_by ?? userId : userId,
@@ -513,8 +516,11 @@ export default function DashboardClient() {
                   <label className="space-y-2 text-sm text-slate-700">
                     <span className="font-semibold">Sermon Text</span>
                     <textarea
-                      value={selectedSermon.body}
-                      onChange={(event) => setSelectedSermon({ ...selectedSermon, body: event.target.value })}
+                      value={selectedSermon.content ?? selectedSermon.body ?? ''}
+                      onChange={(event) => {
+                        const nextValue = event.target.value;
+                        setSelectedSermon({ ...selectedSermon, content: nextValue, body: nextValue });
+                      }}
                       rows={8}
                       className="w-full rounded-3xl border border-purple-200 bg-white px-4 py-4 text-sm outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
                       placeholder="Write the sermon message here..."

@@ -8,7 +8,8 @@ type Sermon = {
   sermon_date: string;
   passage: string;
   speaker: string;
-  body: string;
+  content?: string;
+  body?: string;
   video_link: string;
   published: boolean;
   created_at: string;
@@ -67,7 +68,7 @@ export default function PublicContentList({ sermons, events }: Props) {
       label: 'SERMON',
       date: item.sermon_date,
       subtitle: item.passage || item.speaker,
-      body: item.body,
+      body: item.content ?? item.body ?? '',
       speaker: item.speaker,
       video_link: item.video_link,
       type: 'sermon' as const,
