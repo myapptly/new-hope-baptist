@@ -33,14 +33,27 @@ type SpecialEvent = {
   created_at: string;
 };
 
+type Education = {
+  id: string;
+  title: string;
+  category: string | null;
+  description: string | null;
+  resource_link: string | null;
+  video_link: string | null;
+  published: boolean;
+  created_by: string | null;
+  created_at: string;
+  updated_at: string;
+}; 
+
 type ContentListItem = {
   id: string;
-  type: 'sermon' | 'event';
+  type: 'sermon' | 'event' | 'education';
   title: string;
   subtitle: string;
   status: 'Published' | 'Draft';
   created_at: string;
-  raw: Sermon | SpecialEvent;
+  raw: Sermon | SpecialEvent | Education;
 };
 
 type SelectedPhoto = {
@@ -116,11 +129,13 @@ function generateSermonSlug(title: string) {
 export default function DashboardClient() {
   const [userId, setUserId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'sermon' | 'event'>('sermon');
+const [activeTab, setActiveTab] = useState<'sermon' | 'event' | 'education'>('sermon'); 
   const [sermons, setSermons] = useState<Sermon[]>([]);
   const [events, setEvents] = useState<SpecialEvent[]>([]);
+  const [education, setEducation] = useState<Education[]>([]);
   const [selectedSermon, setSelectedSermon] = useState<Sermon>(initialSermon);
   const [selectedEvent, setSelectedEvent] = useState<SpecialEvent>(initialEvent);
+  const [selectedEducation, setSelectedEducation] = useState<Education | null>(null); 
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [actionPending, setActionPending] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<SelectedPhoto[]>([]);
@@ -148,8 +163,18 @@ export default function DashboardClient() {
       raw: event,
     }));
 
-    return [...sermonItems, ...eventItems].sort((a, b) => (a.created_at < b.created_at ? 1 : -1));
-  }, [sermons, events]);
+    const educationItems: ContentListItem[] = education.map((education) => ({
+      id: education.id,
+      type: 'education',
+      title: education.title || 'Untitled Education',
+      subtitle: education.category || 'No Category',
+      status: education.published ? 'Published' : 'Draft',
+      created_at: education.created_at,
+      raw: education,
+    }));
+
+    return [...sermonItems, ...eventItems, ...educationItems].sort((a, b) => (a.created_at < b.created_at ? 1 : -1));
+  }, [sermons, events, education]);
 
   useEffect(() => {
     fetchSessionAndContent();
@@ -170,9 +195,10 @@ export default function DashboardClient() {
   }
 
   async function fetchContent() {
-    const [sermonRes, eventRes] = await Promise.all([
+    const [sermonRes, eventRes, educationRes] = await Promise.all([
       supabase.from('sermons').select('*').order('created_at', { ascending: false }),
       supabase.from('special_events').select('*').order('created_at', { ascending: false }),
+      supabase.from('education').select('*').order('created_at', { ascending: false }),
     ]);
 
     if (sermonRes.error) {
@@ -185,6 +211,12 @@ export default function DashboardClient() {
       setStatusMessage(`Could not load events: ${eventRes.error.message}`);
     } else {
       setEvents(eventRes.data ?? []);
+    }
+
+    if (educationRes.error) {
+      setStatusMessage(`Could not load education: ${educationRes.error.message}`);
+    } else {
+      setEducation(educationRes.data ?? []);
     }
   }
 
