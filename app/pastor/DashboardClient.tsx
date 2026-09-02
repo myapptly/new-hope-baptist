@@ -93,6 +93,19 @@ const initialEvent: SpecialEvent = {
   created_at: '',
 };
 
+const initialEducation: Education = {
+  id: '',
+  title: '',
+  category: null,
+  description: null,
+  resource_link: null,
+  video_link: null,
+  published: false,
+  created_by: null,
+  created_at: '',
+  updated_at: '',
+};
+
 const eventOptions = [
   'Revival',
   'Homecoming',
