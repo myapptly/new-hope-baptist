@@ -428,7 +428,7 @@ const [activeTab, setActiveTab] = useState<'sermon' | 'event' | 'education'>('se
     if (error) {
       setStatusMessage(`Could not delete ${item.type}: ${error.message}`);
     } else {
-      setStatusMessage(`${item.type === 'sermon' ? 'Sermon' : 'Event'} deleted.`);
+      setStatusMessage(`${item.type === 'sermon' ? 'Sermon' : item.type === 'event' ? 'Event' : 'Education'} deleted.`);
       await fetchContent();
     }
 
