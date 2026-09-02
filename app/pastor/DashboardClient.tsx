@@ -422,7 +422,7 @@ const [activeTab, setActiveTab] = useState<'sermon' | 'event' | 'education'>('se
     setActionPending(true);
     setStatusMessage(null);
 
-    const table = item.type === 'sermon' ? 'sermons' : 'special_events';
+    const table = item.type === 'sermon' ? 'sermons' : item.type === 'event' ? 'special_events' : 'education';    
     const { error } = await supabase.from(table).delete().eq('id', item.id);
 
     if (error) {
