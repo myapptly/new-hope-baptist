@@ -141,6 +141,9 @@ const [activeTab, setActiveTab] = useState<'sermon' | 'event' | 'education'>('se
   const [selectedFiles, setSelectedFiles] = useState<SelectedPhoto[]>([]);
   const [removedPhotoPaths, setRemovedPhotoPaths] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  function resetEducationForm() {
+  setSelectedEducation(null);
+}
 
   const contentItems = useMemo<ContentListItem[]>(() => {
     const sermonItems: ContentListItem[] = sermons.map((sermon) => ({
