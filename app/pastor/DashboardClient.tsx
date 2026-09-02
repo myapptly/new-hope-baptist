@@ -142,7 +142,7 @@ function generateSermonSlug(title: string) {
 export default function DashboardClient() {
   const [userId, setUserId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-const [activeTab, setActiveTab] = useState<'sermon' | 'event' | 'education'>('sermon'); 
+  const [activeTab, setActiveTab] = useState<'sermon' | 'event' | 'education'>('sermon'); 
   const [sermons, setSermons] = useState<Sermon[]>([]);
   const [events, setEvents] = useState<SpecialEvent[]>([]);
   const [education, setEducation] = useState<Education[]>([]);
@@ -154,9 +154,9 @@ const [activeTab, setActiveTab] = useState<'sermon' | 'event' | 'education'>('se
   const [selectedFiles, setSelectedFiles] = useState<SelectedPhoto[]>([]);
   const [removedPhotoPaths, setRemovedPhotoPaths] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  function resetEducationForm() {
-  setSelectedEducation(null);
-}
+  
+function resetEducationForm() {
+  setSelectedEducation(initialEducation);}
 
   const contentItems = useMemo<ContentListItem[]>(() => {
     const sermonItems: ContentListItem[] = sermons.map((sermon) => ({
