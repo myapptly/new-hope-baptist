@@ -245,6 +245,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-purple-950 text-purple-200 py-8 px-4 border-t border-purple-900 text-center text-sm">
         <p>&copy; {new Date().getFullYear()} New Hope Baptist Church & Bible College. All rights reserved.</p>
+       <a href="/pastor/login" className="underline hover:text-white">Pastor Login</a>  
       </footer>
     </div>
   );
