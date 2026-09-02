@@ -431,6 +431,63 @@ function resetEducationForm() {
     }
   }
 
+ async function saveEducation(publish: boolean) {
+  if (!selectedEducation || !selectedEducation.title.trim()) {
+    setStatusMessage('An education title is required.');
+    return;
+  }
+
+  if (!userId) {
+    setStatusMessage('You must be signed in to save content.');
+    return;
+  }
+
+  setActionPending(true);
+  setStatusMessage(null);
+
+  const payload = {
+    title: selectedEducation.title,
+    category: selectedEducation.category,
+    description: selectedEducation.description,
+    resource_link: selectedEducation.resource_link,
+    video_link: selectedEducation.video_link,
+    published: publish,
+    created_by: selectedEducation.id ? selectedEducation.created_by ?? userId : userId,
+    updated_at: new Date().toISOString(),
+  };
+
+  try {
+    let response;
+
+    if (selectedEducation.id) {
+      response = await supabase
+        .from('education')
+        .update(payload)
+        .eq('id', selectedEducation.id)
+        .select()
+        .single();
+    } else {
+      response = await supabase
+        .from('education')
+        .insert({ ...payload })
+        .select()
+        .single();
+    }
+
+    if (response.error) {
+      throw response.error;
+    }
+
+    await fetchContent();
+    resetEducationForm();
+    setStatusMessage(publish ? 'Education published successfully.' : 'Education saved as draft.');
+  } catch (error) {
+    setStatusMessage(`Could not save education: ${(error as Error).message}`);
+  } finally {
+    setActionPending(false);
+  }
+} 
+
   async function deleteContent(item: ContentListItem) {
     setActionPending(true);
     setStatusMessage(null);
