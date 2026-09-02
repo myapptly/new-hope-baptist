@@ -579,6 +579,16 @@ function resetEducationForm() {
                 >
                   Add Special Event
                 </button>
+                <button
+  type="button"
+  onClick={() => {
+    setActiveTab('education');
+    resetEducationForm();
+  }}
+  className={`rounded-2xl px-5 py-3 text-sm font-semibold transition ${activeTab === 'education' ? 'bg-purple-700 text-white' : 'border border-purple-200 bg-white text-purple-800 hover:bg-purple-50'}`}
+>
+  Add Education
+</button>
               </div>
             </div>
 
