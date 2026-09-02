@@ -247,6 +247,11 @@ const [activeTab, setActiveTab] = useState<'sermon' | 'event' | 'education'>('se
     setRemovedPhotoPaths([]);
   }
 
+  function startEditingEducation(education: Education) {
+    setActiveTab('education');
+    setSelectedEducation(education);
+}
+
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.target.files;
     if (!files?.length) return;
@@ -431,21 +436,30 @@ const [activeTab, setActiveTab] = useState<'sermon' | 'event' | 'education'>('se
   }
 
   async function togglePublish(item: ContentListItem) {
-    setActionPending(true);
-    setStatusMessage(null);
+  setActionPending(true);
+  setStatusMessage(null);
 
-    const table = item.type === 'sermon' ? 'sermons' : 'special_events';
-    const { error } = await supabase.from(table).update({ published: item.status !== 'Published' }).eq('id', item.id);
+  const table =
+    item.type === 'sermon'
+      ? 'sermons'
+      : item.type === 'event'
+        ? 'special_events'
+        : 'education';
 
-    if (error) {
-      setStatusMessage(`Could not update ${item.type}: ${error.message}`);
-    } else {
-      setStatusMessage(item.status === 'Published' ? 'Content unpublished.' : 'Content published.');
-      await fetchContent();
-    }
+  const { error } = await supabase
+    .from(table)
+    .update({ published: item.status !== 'Published' })
+    .eq('id', item.id);
 
-    setActionPending(false);
+  if (error) {
+    setStatusMessage(`Could not update ${item.type}: ${error.message}`);
+  } else {
+    setStatusMessage(item.status === 'Published' ? 'Content unpublished.' : 'Content published.');
+    await fetchContent();
   }
+
+  setActionPending(false);
+}
 
   const eventPhotoPreviews = useMemo(() => {
     const existing = selectedEvent.photo_paths.map((path) => ({
