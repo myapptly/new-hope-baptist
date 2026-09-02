@@ -74,3 +74,29 @@ create policy "Authenticated manage special event photos" on storage.objects
 insert into storage.buckets (id, name, public)
 values ('special-event-photos', 'special-event-photos', true)
 on conflict (id) do update set public = excluded.public;
+
+-- Create the education table.
+create table if not exists public.education (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  category text,
+  description text,
+  resource_link text,
+  video_link text,
+  published boolean default false not null,
+  created_by uuid,
+  created_at timestamp with time zone default now() not null,
+  updated_at timestamp with time zone default now() not null
+);
+
+-- Enable row level security.
+alter table public.education enable row level security;
+
+drop policy if exists "Public published education" on public.education;
+create policy "Public published education" on public.education
+  for select using (published);
+
+drop policy if exists "Authenticated manage education" on public.education;
+create policy "Authenticated manage education" on public.education
+  for all using (auth.role() = 'authenticated')
+  with check (auth.role() = 'authenticated'); 
