@@ -31,14 +31,14 @@ export default async function VictoryPathPage() {
           </div>
           <p className="mt-5 text-xs font-bold uppercase tracking-[0.22em] text-[#f4c54d]">Mentoring &amp; Evangelism</p>
           <h1 className="mt-2 font-serif text-4xl font-bold">New Hope / Victory Path</h1>
-          <p className="mt-3 text-sm leading-6 text-blue-100">A basketball program for young women focused on faith, mentoring, character, opportunity and the future.</p>
+          <p className="mt-3 text-sm leading-6 text-blue-100">A basketball program for young people focused on faith, mentoring, character, opportunity and the future.</p>
         </header>
 
         <section className="px-4 py-5">
           <div className="rounded-[24px] border border-[#ead28b] bg-[#fffaf0] p-5 shadow-sm">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#8b6511]">Faith • Hope • Future</p>
-            <h2 className="mt-2 font-serif text-2xl font-bold text-[#0b285c]">Building young women on and off the court</h2>
-            <p className="mt-3 text-sm leading-6 text-[#4e596d]">Victory Path partners with New Hope Baptist Church to use basketball, mentoring and evangelism to encourage young women and help them grow in faith and life.</p>
+            <h2 className="mt-2 font-serif text-2xl font-bold text-[#0b285c]">Building young people on and off the court</h2>
+            <p className="mt-3 text-sm leading-6 text-[#4e596d]">Victory Path partners with New Hope Baptist Church to use basketball, mentoring and evangelism to encourage young people and help them grow in faith and life.</p>
           </div>
 
           <div className="mt-4 rounded-[24px] bg-[#0b285c] p-5 text-center text-white shadow-lg">
