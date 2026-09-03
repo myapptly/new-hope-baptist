@@ -26,8 +26,10 @@ export default async function VictoryPathPage() {
       <div className="mx-auto min-h-screen max-w-md bg-white pb-28 shadow-2xl">
         <header className="bg-gradient-to-br from-[#071b43] via-[#0b2b63] to-[#071b43] px-5 pb-7 pt-7 text-center text-white">
           <a href="/" className="text-xs font-bold uppercase tracking-[0.2em] text-[#f4c54d]">← New Hope</a>
-          <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#f4c54d] text-3xl">🏀</div>
-          <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-[#f4c54d]">Mentoring &amp; Evangelism</p>
+          <div className="mt-5 overflow-hidden rounded-[22px] border border-white/20 bg-white shadow-lg">
+            <img src="/New Hope Victory Path.png" alt="New Hope partnering with Victory Path mentoring and evangelism program" className="w-full object-contain" />
+          </div>
+          <p className="mt-5 text-xs font-bold uppercase tracking-[0.22em] text-[#f4c54d]">Mentoring &amp; Evangelism</p>
           <h1 className="mt-2 font-serif text-4xl font-bold">New Hope / Victory Path</h1>
           <p className="mt-3 text-sm leading-6 text-blue-100">A basketball program for young women focused on faith, mentoring, character, opportunity and the future.</p>
         </header>
