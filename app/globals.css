@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+main nav.fixed:not(.public-bottom-nav) {
+  display: none;
+}
