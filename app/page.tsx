@@ -56,6 +56,26 @@ export default function Home() {
 
         <section id="contact" className="mx-4 mt-4 rounded-[24px] bg-gradient-to-br from-[#7a3e8e] to-[#4b245b] p-5 text-white shadow-lg"><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#f0d58f]">Visit New Hope</p><h2 className="mt-1 font-serif text-2xl font-bold">Location &amp; Contact</h2><div className="mt-4 space-y-3 text-sm"><p><span className="text-[#ddc8e5]">Pastor:</span> {contactInfo.pastor}</p><p>{contactInfo.address}</p><p>{contactInfo.phone}</p></div><div className="mt-5 grid grid-cols-3 gap-2"><a href={`tel:${contactInfo.phoneDigits}`} className="rounded-[14px] bg-white/15 px-2 py-3 text-center text-sm font-semibold">Call</a><a href={`sms:${contactInfo.phoneDigits}`} className="rounded-[14px] bg-white/15 px-2 py-3 text-center text-sm font-semibold">Text</a><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`} target="_blank" rel="noopener noreferrer" className="rounded-[14px] bg-white px-2 py-3 text-center text-sm font-bold text-[#5b2c6b]">Directions</a></div></section>
 
+        <section className="mx-4 mt-4 rounded-[24px] border border-[#decfe5] bg-white p-5 shadow-sm">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7d498f]">Keep New Hope Handy</p>
+            <h2 className="mt-1 font-serif text-2xl font-bold text-[#2f1d38]">Install the New Hope App</h2>
+            <p className="mt-2 text-sm leading-6 text-[#6b6070]">Add New Hope to your phone's home screen for quick access anytime.</p>
+          </div>
+          <div className="mt-5 flex justify-center"><img src="/new-hope-baptist-qr-code.png" alt="QR code for the New Hope Baptist Church app" className="h-32 w-32 rounded-xl border border-[#e4d9e9] bg-white p-2" /></div>
+          <p className="mt-2 text-center text-xs text-[#756b7b]">Scan this code with your phone camera if you are viewing this page on another device.</p>
+          <div className="mt-5 grid gap-3">
+            <div className="rounded-[18px] bg-[#f8f1fb] p-4">
+              <p className="font-bold text-[#4f285e]">iPhone / iPad</p>
+              <p className="mt-2 text-sm leading-6 text-[#62596a]">Open this site in Safari, tap the Share button, choose <strong>Add to Home Screen</strong>, then tap <strong>Add</strong>.</p>
+            </div>
+            <div className="rounded-[18px] bg-[#f8f1fb] p-4">
+              <p className="font-bold text-[#4f285e]">Android</p>
+              <p className="mt-2 text-sm leading-6 text-[#62596a]">Open this site in Chrome, tap the three-dot menu, choose <strong>Add to Home screen</strong> or <strong>Install app</strong>, then confirm.</p>
+            </div>
+          </div>
+        </section>
+
         <section className="mx-4 mt-5 rounded-[22px] border-2 border-[#5e346e] bg-[#f8f1fb] p-5 text-center shadow-md"><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7d498f]">Church Administration</p><h2 className="mt-1 font-serif text-xl font-bold text-[#2f1d38]">Pastor Dashboard</h2><p className="mt-2 text-sm text-[#6b6070]">Manage sermons, calendar events, pictures, education and Victory Path updates.</p><a href="/pastor/login" className="mt-4 block rounded-[16px] bg-[#4f285e] px-4 py-3.5 text-center text-sm font-bold text-white shadow-lg">🔐 Pastor Login</a></section>
 
         <footer className="px-5 py-7 text-center text-xs text-[#756b7b]">© {new Date().getFullYear()} New Hope Baptist Church &amp; Bible College</footer>
