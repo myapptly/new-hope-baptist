@@ -51,9 +51,7 @@ export default function Home() {
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#eadbb5]">
               Faith • Family • Fellowship
             </p>
-            <h1 className="font-serif text-[42px] font-bold leading-[0.98]">
-              New Hope
-            </h1>
+            <h1 className="font-serif text-[42px] font-bold leading-[0.98]">New Hope</h1>
             <p className="mt-2 text-base font-semibold uppercase tracking-[0.22em] text-[#d8b6e8]">
               Baptist Church
             </p>
@@ -91,6 +89,24 @@ export default function Home() {
 
         <section className="mt-3 grid grid-cols-2 gap-3 px-4">
           <a
+            href="/calendar"
+            className="rounded-[18px] border border-[#decfe5] bg-white px-3 py-4 text-center shadow-sm"
+          >
+            <p className="text-xl">📅</p>
+            <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-[#6e3c7f]">Calendar</p>
+          </a>
+
+          <a
+            href="/pictures"
+            className="rounded-[18px] border border-[#decfe5] bg-white px-3 py-4 text-center shadow-sm"
+          >
+            <p className="text-xl">📷</p>
+            <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-[#6e3c7f]">Pictures</p>
+          </a>
+        </section>
+
+        <section className="mt-3 grid grid-cols-2 gap-3 px-4">
+          <a
             href={`tel:${contactInfo.phoneDigits}`}
             className="rounded-[18px] border border-[#decfe5] bg-white px-3 py-4 text-center shadow-sm"
           >
@@ -120,7 +136,7 @@ export default function Home() {
         </section>
 
         {/* Victory placeholder */}
-        <section id="victory" className="mx-4 mt-4 overflow-hidden rounded-[24px] border border-[#ddc98f] bg-gradient-to-br from-[#fffaf0] to-[#f5ecce] shadow-sm scroll-mt-20">
+        <section id="victory" className="mx-4 mt-4 scroll-mt-20 overflow-hidden rounded-[24px] border border-[#ddc98f] bg-gradient-to-br from-[#fffaf0] to-[#f5ecce] shadow-sm">
           <div className="p-5 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#7b6433]">Reserved Feature</p>
             <div className="mx-auto mt-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#3d2348] text-2xl text-white shadow">✦</div>
@@ -215,18 +231,8 @@ export default function Home() {
           </div>
 
           <div className="mt-5 grid grid-cols-3 gap-2">
-            <a
-              href={`tel:${contactInfo.phoneDigits}`}
-              className="rounded-[14px] bg-white/15 px-2 py-3 text-center text-sm font-semibold"
-            >
-              Call
-            </a>
-            <a
-              href={`sms:${contactInfo.phoneDigits}`}
-              className="rounded-[14px] bg-white/15 px-2 py-3 text-center text-sm font-semibold"
-            >
-              Text
-            </a>
+            <a href={`tel:${contactInfo.phoneDigits}`} className="rounded-[14px] bg-white/15 px-2 py-3 text-center text-sm font-semibold">Call</a>
+            <a href={`sms:${contactInfo.phoneDigits}`} className="rounded-[14px] bg-white/15 px-2 py-3 text-center text-sm font-semibold">Text</a>
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
               target="_blank"
@@ -262,32 +268,42 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="px-5 pb-28 pt-7 text-center text-xs text-[#756b7b]">
-          <p>© {new Date().getFullYear()} New Hope Baptist Church &amp; Bible College</p>
-          <a href="/pastor/login" className="mt-2 inline-block font-semibold text-[#6b3a7c] underline underline-offset-4">
-            Pastor Login
+        {/* Pastor access */}
+        <section className="mx-4 mt-5 rounded-[22px] border-2 border-[#5e346e] bg-[#f8f1fb] p-5 text-center shadow-md">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7d498f]">Church Administration</p>
+          <h2 className="mt-1 font-serif text-xl font-bold text-[#2f1d38]">Pastor Dashboard</h2>
+          <p className="mt-2 text-sm text-[#6b6070]">Manage sermons, events, education, pictures and other church content.</p>
+          <a
+            href="/pastor/login"
+            className="mt-4 block rounded-[16px] bg-[#4f285e] px-4 py-3.5 text-center text-sm font-bold text-white shadow-lg transition active:scale-[0.98]"
+          >
+            🔐 Pastor Login
           </a>
+        </section>
+
+        <footer className="px-5 pb-28 pt-6 text-center text-xs text-[#756b7b]">
+          <p>© {new Date().getFullYear()} New Hope Baptist Church &amp; Bible College</p>
         </footer>
 
-        {/* Persistent mobile navigation */}
-        <nav className="fixed inset-x-0 bottom-0 z-50 mx-auto grid max-w-md grid-cols-5 border-t border-[#d9c9df] bg-[#fffafd]/98 px-1 pb-[max(8px,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_28px_rgba(47,29,58,0.14)] backdrop-blur-md">
-          <a href="#home" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
+        {/* Solid persistent mobile navigation */}
+        <nav className="fixed inset-x-0 bottom-0 z-[9999] mx-auto grid max-w-md grid-cols-5 border-t-2 border-[#5e346e] bg-white px-1 pb-[max(9px,env(safe-area-inset-bottom))] pt-2 shadow-[0_-10px_30px_rgba(30,18,38,0.28)] isolate">
+          <a href="#home" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#4f285e]">
             <span className="text-lg leading-none">⌂</span>
             Home
           </a>
-          <a href="/sermons" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
+          <a href="/sermons" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#4f285e]">
             <span className="text-lg leading-none">🎙️</span>
             Sermons
           </a>
-          <a href="/bible-college" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
-            <span className="text-lg leading-none">📖</span>
-            College
+          <a href="/calendar" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#4f285e]">
+            <span className="text-lg leading-none">📅</span>
+            Calendar
           </a>
-          <a href="#victory" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
-            <span className="text-lg leading-none">✦</span>
-            Victory
+          <a href="/pictures" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#4f285e]">
+            <span className="text-lg leading-none">📷</span>
+            Pictures
           </a>
-          <a href="#contact" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
+          <a href="#contact" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#4f285e]">
             <span className="text-lg leading-none">☎</span>
             Contact
           </a>
