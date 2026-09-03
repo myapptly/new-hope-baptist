@@ -30,26 +30,28 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#eeeaf3] text-[#211b29]">
       <div className="mx-auto min-h-screen max-w-md overflow-hidden bg-[#fbf9fd] shadow-2xl">
-        {/* Hero */}
-        <section id="home" className="relative h-[370px] overflow-hidden bg-[#24152f]">
-          <img
-            src="/new hope 2.png"
-            alt="New Hope Baptist Church"
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-[#1f102b]/90" />
+        {/* Hero photo */}
+        <section id="home" className="relative overflow-hidden bg-[#24152f]">
+          <div className="relative h-[285px] sm:h-[320px]">
+            <img
+              src="/new hope 2.png"
+              alt="New Hope Baptist Church"
+              className="h-full w-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/15" />
 
-          <div className="absolute inset-x-0 top-4 px-4 text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#f1d798] drop-shadow-md">
-              Winston-Salem, North Carolina
-            </p>
+            <div className="absolute inset-x-0 top-4 px-4 text-center">
+              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white drop-shadow-lg">
+                Winston-Salem, North Carolina
+              </p>
+            </div>
           </div>
 
-          <div className="absolute inset-x-0 bottom-5 px-5 text-center text-white">
+          <div className="bg-gradient-to-br from-[#291733] via-[#341d40] to-[#24152f] px-5 py-5 text-center text-white">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#eadbb5]">
               Faith • Family • Fellowship
             </p>
-            <h1 className="font-serif text-[42px] font-bold leading-[0.98] drop-shadow-lg">
+            <h1 className="font-serif text-[42px] font-bold leading-[0.98]">
               New Hope
             </h1>
             <p className="mt-2 text-base font-semibold uppercase tracking-[0.22em] text-[#d8b6e8]">
@@ -117,6 +119,19 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Victory placeholder */}
+        <section id="victory" className="mx-4 mt-4 overflow-hidden rounded-[24px] border border-[#ddc98f] bg-gradient-to-br from-[#fffaf0] to-[#f5ecce] shadow-sm scroll-mt-20">
+          <div className="p-5 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#7b6433]">Reserved Feature</p>
+            <div className="mx-auto mt-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#3d2348] text-2xl text-white shadow">✦</div>
+            <h2 className="mt-3 font-serif text-2xl font-bold text-[#2f1d38]">Victory</h2>
+            <p className="mt-2 text-sm leading-6 text-[#6e6048]">
+              A dedicated place has been reserved here for the Victory feature Pastor Carver discussed.
+            </p>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b7442]">Details Coming Soon</p>
+          </div>
+        </section>
+
         {/* Bible College */}
         <section className="mx-4 mt-4 overflow-hidden rounded-[24px] bg-[#25152f] text-white shadow-lg">
           <img
@@ -171,7 +186,7 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="mx-4 mt-4 rounded-[24px] bg-gradient-to-br from-[#7a3e8e] to-[#4b245b] p-5 text-white shadow-lg">
+        <section id="contact" className="mx-4 mt-4 scroll-mt-20 rounded-[24px] bg-gradient-to-br from-[#7a3e8e] to-[#4b245b] p-5 text-white shadow-lg">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#f0d58f]">Visit New Hope</p>
           <h2 className="mt-1 font-serif text-2xl font-bold">Location &amp; Contact</h2>
 
@@ -247,29 +262,33 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="px-5 pb-24 pt-7 text-center text-xs text-[#756b7b]">
+        <footer className="px-5 pb-28 pt-7 text-center text-xs text-[#756b7b]">
           <p>© {new Date().getFullYear()} New Hope Baptist Church &amp; Bible College</p>
           <a href="/pastor/login" className="mt-2 inline-block font-semibold text-[#6b3a7c] underline underline-offset-4">
             Pastor Login
           </a>
         </footer>
 
-        {/* Mobile bottom navigation */}
-        <nav className="fixed inset-x-0 bottom-0 z-50 mx-auto flex max-w-md items-center justify-around border-t border-[#dfd3e4] bg-[#fffafd]/95 px-2 py-2 shadow-[0_-8px_24px_rgba(47,29,58,0.08)] backdrop-blur">
-          <a href="#home" className="flex min-w-[64px] flex-col items-center gap-1 rounded-xl px-2 py-1 text-[11px] font-semibold text-[#5e346e]">
-            <span className="text-lg">⌂</span>
+        {/* Persistent mobile navigation */}
+        <nav className="fixed inset-x-0 bottom-0 z-50 mx-auto grid max-w-md grid-cols-5 border-t border-[#d9c9df] bg-[#fffafd]/98 px-1 pb-[max(8px,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_28px_rgba(47,29,58,0.14)] backdrop-blur-md">
+          <a href="#home" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
+            <span className="text-lg leading-none">⌂</span>
             Home
           </a>
-          <a href="/sermons" className="flex min-w-[64px] flex-col items-center gap-1 rounded-xl px-2 py-1 text-[11px] font-semibold text-[#5e346e]">
-            <span className="text-lg">🎙️</span>
+          <a href="/sermons" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
+            <span className="text-lg leading-none">🎙️</span>
             Sermons
           </a>
-          <a href="/bible-college" className="flex min-w-[64px] flex-col items-center gap-1 rounded-xl px-2 py-1 text-[11px] font-semibold text-[#5e346e]">
-            <span className="text-lg">📖</span>
+          <a href="/bible-college" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
+            <span className="text-lg leading-none">📖</span>
             College
           </a>
-          <a href="#contact" className="flex min-w-[64px] flex-col items-center gap-1 rounded-xl px-2 py-1 text-[11px] font-semibold text-[#5e346e]">
-            <span className="text-lg">☎</span>
+          <a href="#victory" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
+            <span className="text-lg leading-none">✦</span>
+            Victory
+          </a>
+          <a href="#contact" className="flex flex-col items-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-bold text-[#5e346e]">
+            <span className="text-lg leading-none">☎</span>
             Contact
           </a>
         </nav>
