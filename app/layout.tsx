@@ -38,6 +38,27 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
+        <div
+          style={{
+            maxWidth: '28rem',
+            margin: '0 auto 78px',
+            padding: '10px 16px 14px',
+            textAlign: 'center',
+            background: '#24152f',
+            color: '#cbbdd0',
+            fontSize: '11px',
+          }}
+        >
+          Built by{' '}
+          <a
+            href="https://www.myapptly.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#eadbb5', fontWeight: 700, textDecoration: 'none' }}
+          >
+            APPTLY
+          </a>
+        </div>
         <PublicBottomNav />
       </body>
     </html>
